@@ -9,5 +9,5 @@ export class Utilisateur {
     niveau:string;
     specialite:string;
     grade:string;
-    curriculum:string;
+    curriculum_vitae:string;
 }
