@@ -10,6 +10,10 @@ import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { ProfileComponent } from './profile/profile.component';
 import { InterviewComponent } from './interview/interview.component';
+import { SessionComponent } from './session/session.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { MessagerieComponent } from './messagerie/messagerie.component';
+import { AccueilComponent } from './accueil/accueil.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { InterviewComponent } from './interview/interview.component';
     SidebarComponent,
     FooterComponent,
     ProfileComponent,
-    InterviewComponent
+    InterviewComponent,
+    SessionComponent,
+    UtilisateurComponent,
+    MessagerieComponent,
+    AccueilComponent
   ],
   imports: [
     BrowserModule,
