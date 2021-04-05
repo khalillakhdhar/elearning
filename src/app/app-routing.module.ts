@@ -8,9 +8,11 @@ import { InterviewComponent } from './interview/interview.component';
 import { SessionComponent } from './session/session.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 const routes: Routes = [
   {path:"",component: ConnexionComponent},
+  {path:"inscription",component: InscriptionComponent},
   {path:"home",component:LayoutComponent,
 children:
 [
