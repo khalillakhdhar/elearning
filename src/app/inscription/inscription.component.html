@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-learning</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/icheck-bootstrap/3.0.1/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../../assets/index2.html"><b>Admin</b>LTE</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">S'inscrire</p>
+
+      <form action="#" method="post">
+        <div class="input-group mb-3">
+          <input type="text" name="nom" class="form-control" [(ngModel)]="user.nom" placeholder="Nom">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="number" name="age" [(ngModel)]="user.age" class="form-control" placeholder="age">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" name="phone" [(ngModel)]="user.telephone" class="form-control" placeholder="téléphone">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-phone"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <textarea class="form-control" name="adresse" [(ngModel)]="user.adresse" placeholder="Adresse"></textarea>
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-globe"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" name="s" class="form-control" [(ngModel)]="user.specialite" placeholder="spécialité">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-book"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" name="n" class="form-control" [(ngModel)]="user.niveau" placeholder="niveau">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-atom"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="email"  [(ngModel)]="user.email" name="mail" class="form-control" placeholder="Email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" name="pass" [(ngModel)]="user.mdp" class="form-control" placeholder="Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+       
+          <!-- /.col -->
+          <div class="col-6">
+            <button type="submit" (click)="adduser()" class="btn btn-primary btn-block">S'inscrire</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+      <div class="social-auth-links text-center mb-3">
+        <p>- OU -</p>
+       
+      </div>
+      <!-- /.social-auth-links -->
+
+     
+      <p class="mb-0">
+        <a href="" class="text-center">Déjà membre</a>
+      </p>
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script><!-- Bootstrap 4 -->
+<!-- AdminLTE App -->
+</body>
+</html>
