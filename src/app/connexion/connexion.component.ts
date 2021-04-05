@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Utilisateur } from '../classes/utilisateur';
+import { UserService } from '../services/user.service';
+import { logging } from 'protractor';
 
 @Component({
   selector: 'app-connexion',
@@ -6,10 +9,63 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent implements OnInit {
-
-  constructor() { }
+b=false;
+  user:Utilisateur;
+  users:Utilisateur[];
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
+    this.user=new Utilisateur();
+    this.read();
+  }
+read()
+{
+  this.userService.read_Users().subscribe(data => {
+
+    this.users = data.map(e => {
+      return {
+       id: e.payload.doc.id,
+
+       nom: e.payload.doc.data()["nom"],
+       age: e.payload.doc.data()["age"],
+       adresse: e.payload.doc.data()["adresse"],
+       niveau: e.payload.doc.data()["niveau"],
+       specialite: e.payload.doc.data()["specialite"],
+       email: e.payload.doc.data()["email"],
+       mdp: e.payload.doc.data()["mdp"],
+       telephone: e.payload.doc.data()["telephone"],
+       grade: e.payload.doc.data()["grade"],
+       curriculum_vitae: e.payload.doc.data()["curriculum_vitae"],
+
+
+
+      };
+    });
+    console.log(this.users);
+
+  });
+
+
+
+}
+verif()
+{
+for (let u of this.users)
+{
+  if((u.email==this.user.email)&&(u.mdp==this.user.mdp))
+  {
+    this.b=true;
+    localStorage.setItem("id",u.id);
+    localStorage.setItem("grade",u.grade);
+    window.location.replace("home/profile");
+
   }
 
+
+}
+if(!this.b)
+alert("compte non reconnue!");
+
+
+}
 }
