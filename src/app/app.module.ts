@@ -24,6 +24,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 import { FormsModule } from '@angular/forms';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 
 
@@ -40,7 +41,8 @@ import { FormsModule } from '@angular/forms';
     SessionComponent,
     UtilisateurComponent,
     MessagerieComponent,
-    AccueilComponent
+    AccueilComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,
