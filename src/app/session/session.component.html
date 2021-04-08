@@ -14,13 +14,13 @@ Ajouter une session  </button>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>id</td>
-          <td>TItre</td>
+        <tr *ngFor="let sess of sessions">
+          <td>{{sess.id}}</td>
+          <td>{{sess.titre}}</td>
           <td>
-              description
+              {{sess.description}}
           </td>
-          <td><button class="btn btn-danger">Supprimer</button></td>
+          <td><button class="btn btn-danger" (click)="supprimer(sess.id)">Supprimer</button></td>
         </tr>
        
       </tbody>
@@ -36,11 +36,35 @@ Ajouter une session  </button>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+          <form>
+            <div class="row">
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>titre</label>
+                  <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="session.titre" name="nom" class="form-control" placeholder="Votre titre">
+                </div>
+              </div>
+              </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>description</label>
+                  <textarea [ngModelOptions]="{standalone: true}" [(ngModel)]="session.description" name="description" class="form-control" placeholder="description"></textarea>
+                </div>
+              </div>
+              </div>
+
+         
+            <div class="card-footer">
+              <button type="submit" value="ajouter" (click)="ajouter()" class="btn btn-primary">Submit</button>
+            </div>
+          
+</form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+   
         </div>
       </div>
     </div>
