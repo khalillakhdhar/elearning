@@ -5,53 +5,39 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th style="width: 10px">#</th>
-              <th>Task</th>
-              <th>Progress</th>
-              <th style="width: 40px">Label</th>
+              <th style="width: 10px">nom</th>
+              <th>Age</th>
+              <th>Email</th>
+              <th >Téléphone</th>
+              <th >Adresse</th>
+              <th >Niveau</th>
+              <th >specialité</th>
+              <th >Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1.</td>
-              <td>Update software</td>
+          
+            <tr *ngFor="let us of users">
+              <td>{{us.nom}}</td>
+              <td>{{us.age}}</td>
               <td>
-                <div class="progress progress-xs">
-                  <div class="progress-bar progress-bar-danger" style="width: 55%"></div>
-                </div>
+        {{us.email}}
               </td>
-              <td><span class="badge bg-danger">55%</span></td>
-            </tr>
-            <tr>
-              <td>2.</td>
-              <td>Clean database</td>
               <td>
-                <div class="progress progress-xs">
-                  <div class="progress-bar bg-warning" style="width: 70%"></div>
-                </div>
+        {{us.telephone}}
               </td>
-              <td><span class="badge bg-warning">70%</span></td>
-            </tr>
-            <tr>
-              <td>3.</td>
-              <td>Cron job running</td>
               <td>
-                <div class="progress progress-xs progress-striped active">
-                  <div class="progress-bar bg-primary" style="width: 30%"></div>
-                </div>
+        {{us.adresse}}
               </td>
-              <td><span class="badge bg-primary">30%</span></td>
-            </tr>
-            <tr>
-              <td>4.</td>
-              <td>Fix and squish bugs</td>
               <td>
-                <div class="progress progress-xs progress-striped active">
-                  <div class="progress-bar bg-success" style="width: 90%"></div>
-                </div>
+        {{us.niveau}}
               </td>
-              <td><span class="badge bg-success">90%</span></td>
+              <td>
+        {{us.specialite}}
+              </td>
+              <td><a class="btn btn-danger" (click)="supprimer(us.id)">supprimer</a></td>
             </tr>
+           
           </tbody>
         </table>
       </div>
@@ -64,11 +50,64 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              ...
+              <form>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Nom</label>
+                      <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="user.nom" nom="nom" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>age</label>
+                      <input [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="user.age" nom="age" class="form-control" placeholder="Enter ..." >
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-sm-6">
+                    <!-- textarea -->
+                    <div class="form-group">
+                      <label>Adresse</label>
+                      <textarea   name="adresse" class="form-control" rows="3" [(ngModel)]="user.adresse" placeholder="Enter ..."></textarea>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label>Téléphone</label>
+                      <input type="text"  name="phone" [(ngModel)]="user.telephone" class="form-control" placeholder="Enter ..." >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- input states -->
+                <div class="form-group">
+                  <label class="col-form-label" for="inputSuccess"><i class="fas fa-check"></i> 
+                    Email</label>
+                  <input type="text" [(ngModel)]="user.email" name="email" class="form-control " id="inputSuccess" placeholder="Enter ...">
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i> 
+                    Mot de passe</label>
+                  <input type="password" name="mdp"  class="form-control " id="inputWarning" placeholder="Enter ...">
+                </div>
+                <div class="form-group">
+                  <label class="col-form-label" for="inputError"><i class="far fa-times-circle"></i> 
+                    niveau</label>
+                  <input type="text" [(ngModel)]="user.niveau" name="niveau" class="form-control " id="inputError" placeholder="Enter ...">
+                </div>
+
+             
+                <div class="card-footer">
+                  <button type="submit" (click)="ajouter()" class="btn btn-primary">Submit</button>
+                </div>
+              
+</form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
+             
             </div>
           </div>
         </div>
