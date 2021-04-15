@@ -9,6 +9,7 @@ import { SessionComponent } from './session/session.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { CandidatureComponent } from './candidature/candidature.component';
 
 const routes: Routes = [
   {path:"",component: ConnexionComponent},
@@ -22,6 +23,7 @@ children:
   {path:'interview',component:InterviewComponent},
   {path:'session',component:SessionComponent},
   {path:'message',component:MessagerieComponent},
+  {path:'candidature',component:CandidatureComponent},
 ]
 }
 ];
