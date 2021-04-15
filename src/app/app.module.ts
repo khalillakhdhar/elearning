@@ -15,8 +15,11 @@ import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 import { MessagerieComponent } from './messagerie/messagerie.component';
 import { AccueilComponent } from './accueil/accueil.component';
 
-
-
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+} from "@angular/fire/storage";
 //database
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -53,7 +56,8 @@ import { CandidatureComponent } from './candidature/candidature.component';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     AngularFireDatabaseModule,
-    FormsModule
+    FormsModule,
+    AngularFireStorageModule  
   ],
   providers: [],
   bootstrap: [AppComponent]
