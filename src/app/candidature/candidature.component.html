@@ -1,46 +1,7 @@
 <div align="center"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Ajouter un utilisateur  </button>
+    Ajouter une candidature  </button>
     </div>
-    <div class="card-body">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th style="width: 10px">nom</th>
-              <th>Age</th>
-              <th>Email</th>
-              <th >Téléphone</th>
-              <th >Adresse</th>
-              <th >Niveau</th>
-              <th >specialité</th>
-              <th >Action</th>
-            </tr>
-          </thead>
-          <tbody>
-          
-            <tr *ngFor="let us of users">
-              <td>{{us.nom}}</td>
-              <td>{{us.age}}</td>
-              <td>
-        {{us.email}}
-              </td>
-              <td>
-        {{us.telephone}}
-              </td>
-              <td>
-        {{us.adresse}}
-              </td>
-              <td>
-        {{us.niveau}}
-              </td>
-              <td>
-        {{us.specialite}}
-              </td>
-              <td><a class="btn btn-danger" (click)="supprimer(us.id)">supprimer</a></td>
-            </tr>
-           
-          </tbody>
-        </table>
-      </div>
+  
       <!-- Modal -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -55,49 +16,38 @@
                   <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                      <label>Nom</label>
-                      <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="user.nom" nom="nom" class="form-control" placeholder="Enter ...">
+                      <label>Type</label>
+                      <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="candidat.type" nom="nom" class="form-control" placeholder="Enter ...">
                     </div>
                   </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label>age</label>
-                      <input [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="user.age" nom="age" class="form-control" placeholder="Enter ..." >
-                    </div>
-                  </div>
+               
                 </div>
                 <div class="row">
                   <div class="col-sm-6">
                     <!-- textarea -->
                     <div class="form-group">
-                      <label>Adresse</label>
-                      <textarea   name="adresse" class="form-control" rows="3" [(ngModel)]="user.adresse" placeholder="Enter ..."></textarea>
+                      <label>Description</label>
+                      <textarea   name="adresse" class="form-control" rows="3" [(ngModel)]="candidat.description" placeholder="Enter ..."></textarea>
                     </div>
                   </div>
                   <div class="col-sm-6">
                     <div class="form-group">
-                      <label>Téléphone</label>
-                      <input type="text"  name="phone" [(ngModel)]="user.telephone" class="form-control" placeholder="Enter ..." >
+                      <label>Curriculum Vitae</label>
+                      <input (change)="onFileSelected($event)"
+                      type="file"
+                      id="file"
+                      #curriculame
+                      name="cv"
+                      autocomplete="off"
+                       [(ngModel)]="candidat.curriculum" class="form-control" placeholder="Enter ..." >
                     </div>
                   </div>
                 </div>
 
                 <!-- input states -->
-                <div class="form-group">
-                  <label class="col-form-label" for="inputSuccess"><i class="fas fa-check"></i> 
-                    Email</label>
-                  <input type="text" [(ngModel)]="user.email" name="email" class="form-control " id="inputSuccess" placeholder="Enter ...">
-                </div>
-                <div class="form-group">
-                  <label class="col-form-label" for="inputWarning"><i class="far fa-bell"></i> 
-                    Mot de passe</label>
-                  <input type="password" name="mdp"  class="form-control " id="inputWarning" placeholder="Enter ...">
-                </div>
-                <div class="form-group">
-                  <label class="col-form-label" for="inputError"><i class="far fa-times-circle"></i> 
-                    niveau</label>
-                  <input type="text" [(ngModel)]="user.niveau" name="niveau" class="form-control " id="inputError" placeholder="Enter ...">
-                </div>
+              
+           
+         
 
              
                 <div class="card-footer">
