@@ -25,6 +25,7 @@ import { environment } from '../environments/environment';
 
 import { FormsModule } from '@angular/forms';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { CandidatureComponent } from './candidature/candidature.component';
 
 
 
@@ -42,7 +43,8 @@ import { InscriptionComponent } from './inscription/inscription.component';
     UtilisateurComponent,
     MessagerieComponent,
     AccueilComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    CandidatureComponent
   ],
   imports: [
     BrowserModule,

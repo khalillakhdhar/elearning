@@ -6,12 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
+username:string;
   constructor() { }
 
   ngOnInit(): void {
     if(localStorage.length==0)
     window.location.replace("");
+    
 
   }
   deconnecte()
