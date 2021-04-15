@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Utilisateur } from '../classes/utilisateur';
 import { UserService } from '../services/user.service';
+import { Candidature } from '../classes/candidature';
+import { CandidatureService } from '../services/candidature.service';
+import { Observable } from 'rxjs';
+import { AngularFireStorage } from "@angular/fire/storage";
+import { map, finalize } from "rxjs/operators";
 
 @Component({
   selector: 'app-candidature',
@@ -8,37 +13,36 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./candidature.component.css']
 })
 export class CandidatureComponent implements OnInit {
-  user:Utilisateur;
-  users:Utilisateur[];
-    constructor(private userService:UserService) { }
+  candidat:Candidature;
+  candidatures:Candidature[];
+  downloadURL: Observable<string>;
+  selectedFile: File = null;
+  fb = "";
+    constructor(private candidatureService:CandidatureService,
+      private storage: AngularFireStorage,
+      ) { }
   
     ngOnInit(): void {
-      this.user=new Utilisateur();
+      this.candidat=new Candidature();
       this.read();
     }
   ajouter()
   {
-    let us=Object.assign({},this.user);
-    this.userService.create_NewUser(us);
+    let us=Object.assign({},this.candidat);
+    this.candidatureService.create_NewCandidature(us);
   }
   read()
   {
-  this.userService.read_Users().subscribe(data => {
+  this.candidatureService.read_Candidatures().subscribe(data => {
   
-    this.users = data.map(e => {
+    this.candidatures = data.map(e => {
       return {
        id: e.payload.doc.id,
   
-       nom: e.payload.doc.data()["nom"],
-       age: e.payload.doc.data()["age"],
-       adresse: e.payload.doc.data()["adresse"],
-       niveau: e.payload.doc.data()["niveau"],
-       specialite: e.payload.doc.data()["specialite"],
-       email: e.payload.doc.data()["email"],
-       mdp: e.payload.doc.data()["mdp"],
-       telephone: e.payload.doc.data()["telephone"],
-       grade: e.payload.doc.data()["grade"],
-       curriculum_vitae: e.payload.doc.data()["curriculum_vitae"],
+       curriculum: e.payload.doc.data()["nom"],
+       description: e.payload.doc.data()["nom"],
+       type: e.payload.doc.data()["nom"],
+       
   
   
   
@@ -46,16 +50,41 @@ export class CandidatureComponent implements OnInit {
     });
   
   
-    console.log("liste",this.users);
+    console.log("liste",this.candidatures);
   
   });
   
   
   
   }
+  onFileSelected(event) {
+    var n = Date.now();
+    const file = event.target.files[0];
+    const filePath = `/Curriculum/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`/Products/${n}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe((url) => {
+            if (url) {
+              this.fb = url;
+            }
+            console.log(this.fb);
+          });
+        })
+      )
+      .subscribe((url) => {
+        if (url) {
+          console.log(url);
+        }
+      });
+  }
   supprimer(id)
   {
     if(confirm("vous voulez supprimer l'utilisateur?"))
-    this.userService.delete_User(id);
+    this.candidatureService.delete_Candidature(id);
   }
 }
