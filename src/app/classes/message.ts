@@ -1,10 +1,6 @@
 export class Message {
-    id:string;
-    titre:string;
-    text:string;
-    date_heure:string;
-    type:string;
-    cas:string;
-    piece:string;
-    references:string;
+    id: string;
+    texte: string;
+    date: string;
+    topic: string;
 }
