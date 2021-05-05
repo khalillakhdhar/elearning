@@ -10,11 +10,14 @@ import { TopicService } from '../services/topic.service';
 export class MessagerieComponent implements OnInit {
   topics: any;
   topic: Topic;
+  clicked=false;
+key:string;
+code:string;
   constructor(private topicService: TopicService) { }
 
   ngOnInit() {
     this.topic = new Topic();
-    this.read()
+    this.read();
   }
   CreateRecord() {
     const record = {};
@@ -53,6 +56,18 @@ export class MessagerieComponent implements OnInit {
        }
        access(key: string) {
         localStorage.setItem('room', key);
+        this.clicked=true;
+this.key=localStorage.getItem("room");
         //window.location.replace('chattopic');
+      }
+      verif()
+      {
+        if(this.key==this.code)
+        {
+          window.location.replace("/home/rencontre");
+
+        }
+        else 
+        alert("code incorrecte");
       }
 }
