@@ -28,6 +28,7 @@ export class CandidatureComponent implements OnInit {
     }
   ajouter()
   {
+    this.candidat.curriculum=this.fb;
     let us=Object.assign({},this.candidat);
     this.candidatureService.create_NewCandidature(us);
   }
@@ -62,7 +63,7 @@ export class CandidatureComponent implements OnInit {
     const file = event.target.files[0];
     const filePath = `/Curriculum/${n}`;
     const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(`/Products/${n}`, file);
+    const task = this.storage.upload(`/Curriculum/${n}`, file);
     task
       .snapshotChanges()
       .pipe(
