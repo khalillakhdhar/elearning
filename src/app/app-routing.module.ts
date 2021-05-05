@@ -10,6 +10,7 @@ import { MessagerieComponent } from './messagerie/messagerie.component';
 import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { CandidatureComponent } from './candidature/candidature.component';
+import { RencontreComponent } from './rencontre/rencontre.component';
 
 const routes: Routes = [
   {path:"",component: ConnexionComponent},
@@ -24,6 +25,7 @@ children:
   {path:'session',component:SessionComponent},
   {path:'message',component:MessagerieComponent},
   {path:'candidature',component:CandidatureComponent},
+  {path:'rencontre',component:RencontreComponent},
 ]
 }
 ];
