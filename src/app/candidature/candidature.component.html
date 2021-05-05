@@ -17,7 +17,7 @@
                     <!-- text input -->
                     <div class="form-group">
                       <label>Type</label>
-                      <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="candidat.type" nom="nom" class="form-control" placeholder="Enter ...">
+                      <select type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="candidat.type" name="type" class="form-control"><option value="spontanée">Spontanée</option><option>Embauche</option><option value="stage">Stage</option></select>
                     </div>
                   </div>
                
