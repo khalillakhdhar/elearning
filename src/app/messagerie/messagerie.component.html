@@ -31,5 +31,13 @@ Ajouter un sujet  </button>
   
 <table class="table table-bordered">
     <tr><td>titre</td><td>description</td><td>Action</td></tr>
-    <tr  *ngFor="let tp of topics"><td>{{tp.titre}}</td><td>{{tp.description}}</td><td><input type="button" class="btn btn-primary" value="acceder" (click)="access(tp.id)"></td></tr>
+    <tr  *ngFor="let tp of topics"><td>{{tp.titre}}</td><td>{{tp.description}}</td><td><input type="button" class="btn btn-primary" value="acceder" (click)="access(tp.cle)"></td></tr>
     </table>
+
+    <div *ngIf="clicked" class="mb-3">
+      <label for="codeaccess"  class="form-label">Votre code d'accés</label>
+      <input type="text"  name="code" [(ngModel)]="code" class="form-control" id="codeaccess" aria-describedby="accessdata">
+      <div id="accessdata" class="form-text">la clé est envoyé par mail de notre part</div>
+      <button type="submit" (click)="verif()" class="btn btn-primary">commencer le interview</button>
+
+    </div>
