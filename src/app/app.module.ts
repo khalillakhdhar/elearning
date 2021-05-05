@@ -29,6 +29,8 @@ import { environment } from '../environments/environment';
 import { FormsModule } from '@angular/forms';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { CandidatureComponent } from './candidature/candidature.component';
+import { MeetingComponent } from './meeting/meeting.component';
+import { RencontreComponent } from './rencontre/rencontre.component';
 
 
 
@@ -47,7 +49,9 @@ import { CandidatureComponent } from './candidature/candidature.component';
     MessagerieComponent,
     AccueilComponent,
     InscriptionComponent,
-    CandidatureComponent
+    CandidatureComponent,
+    MeetingComponent,
+    RencontreComponent
   ],
   imports: [
     BrowserModule,
