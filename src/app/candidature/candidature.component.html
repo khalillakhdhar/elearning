@@ -62,4 +62,31 @@
           </div>
         </div>
       </div>
-      
+      <div class="card-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th style="width: 10px">nom</th>
+              <th>Description</th>
+              <th>type</th>
+              <th >Curriculum</th>
+             
+              <th >Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          
+            <tr *ngFor="let cv of candidatures">
+              <td>{{cv.description}}</td>
+              <td>{{cv.type}}</td>
+              <td>
+   <a href="cv.curriculum" target="_blank">Voir Curriculum vitae</a>
+              </td>
+           
+       
+              <td><a class="btn btn-danger" (click)="supprimer(cv.id)">supprimer</a></td>
+            </tr>
+           
+          </tbody>
+        </table>
+      </div>
