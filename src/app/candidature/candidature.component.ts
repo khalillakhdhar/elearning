@@ -39,9 +39,9 @@ export class CandidatureComponent implements OnInit {
       return {
        id: e.payload.doc.id,
   
-       curriculum: e.payload.doc.data()["nom"],
-       description: e.payload.doc.data()["nom"],
-       type: e.payload.doc.data()["nom"],
+       curriculum: e.payload.doc.data()["curriculum"],
+       description: e.payload.doc.data()["description"],
+       type: e.payload.doc.data()["type"],
        
   
   
