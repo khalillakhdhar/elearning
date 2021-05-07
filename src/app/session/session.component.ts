@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Session } from '../classes/session';
 import { SessionService } from '../services/session.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-session',
@@ -10,7 +11,8 @@ import { SessionService } from '../services/session.service';
 export class SessionComponent implements OnInit {
 session:Session;
 sessions:Session[];
-  constructor(private sessionService:SessionService) { }
+  constructor(   private route: ActivatedRoute,
+    private router: Router,private sessionService:SessionService) { }
 
   ngOnInit(): void {
     this.session=new Session();
@@ -44,6 +46,14 @@ console.log("interviews",this.sessions);
 
 });
 
+
+
+}
+questionnaire(session)
+{
+localStorage.setItem("ids",session.id);
+localStorage.setItem("titre",session.titre);
+window.location.replace("/home/questions");
 
 
 }
