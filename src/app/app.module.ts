@@ -31,6 +31,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { CandidatureComponent } from './candidature/candidature.component';
 import { MeetingComponent } from './meeting/meeting.component';
 import { RencontreComponent } from './rencontre/rencontre.component';
+import { QuestionsComponent } from './questions/questions.component';
 
 
 
@@ -51,7 +52,8 @@ import { RencontreComponent } from './rencontre/rencontre.component';
     InscriptionComponent,
     CandidatureComponent,
     MeetingComponent,
-    RencontreComponent
+    RencontreComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,
