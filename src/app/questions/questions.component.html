@@ -1,0 +1,76 @@
+<div *ngIf="grade=='admin'">
+<form>
+    <div align="center"><h3> Question pour {{titre}}</h3></div>
+    <div class="row">
+        <br>
+      <div class="col-sm-6">
+        <!-- text input -->
+        <div class="form-group">
+          <label>Titre</label>
+          <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="question.titre" nom="titre" class="form-control" placeholder="Enter ...">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Texte</label>
+          <input [ngModelOptions]="{standalone: true}" type="text" [(ngModel)]="question.texte" nom="texte" class="form-control" placeholder="Enter ..." >
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <!-- textarea -->
+        <div class="form-group">
+          <label>Texte / options</label>
+          <textarea   name="recommandation" class="form-control" rows="3" [(ngModel)]="question.recommandation" placeholder="Enter ...">Aucune</textarea>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label>Réponse idéal</label>
+          <input type="text"  name="reponse" [(ngModel)]="question.reponse" class="form-control" placeholder="Enter ..." >
+        </div>
+      </div>
+    </div>
+
+    <!-- input states -->
+  
+  
+
+ 
+    <div class="card-footer">
+      <button type="submit" (click)="add()" class="btn btn-primary">Submit</button>
+    </div>
+  
+</form>
+
+<div class="card-body" >
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Texte</th>
+        <th>Recommandation</th>
+        <th>Réponse</th>
+        <th >Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let qs of questions">
+        <td>{{qs.titre}}</td>
+        <td>{{qs.texte}}</td>
+        <td>
+            {{qs.recommandation}}
+        </td>
+        <td>
+            {{qs.reponse}}
+        </td>
+        <td>
+          <button class="btn btn-danger" (click)="delete(qs.id)">Supprimer</button>&nbsp;&nbsp;
+          <button class="btn btn-primary" (click)="edit(qs)">Questionnaire</button>
+        </td>
+      </tr>
+     
+    </tbody>
+  </table>
+</div></div>
