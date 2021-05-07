@@ -11,6 +11,7 @@ import { AccueilComponent } from './accueil/accueil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { CandidatureComponent } from './candidature/candidature.component';
 import { RencontreComponent } from './rencontre/rencontre.component';
+import { QuestionsComponent } from './questions/questions.component';
 
 const routes: Routes = [
   {path:"",component: ConnexionComponent},
@@ -26,6 +27,7 @@ children:
   {path:'message',component:MessagerieComponent},
   {path:'candidature',component:CandidatureComponent},
   {path:'rencontre',component:RencontreComponent},
+  {path:'questions',component:QuestionsComponent},
 ]
 }
 ];
