@@ -10,7 +10,7 @@ Ajouter une session  </button>
           <th style="width: 10px">Id</th>
           <th>Titre</th>
           <th>Description</th>
-          <th style="width: 40px">Action</th>
+          <th >Action</th>
         </tr>
       </thead>
       <tbody>
@@ -20,7 +20,10 @@ Ajouter une session  </button>
           <td>
               {{sess.description}}
           </td>
-          <td><button class="btn btn-danger" (click)="supprimer(sess.id)">Supprimer</button></td>
+          <td>
+            <button class="btn btn-danger" (click)="supprimer(sess.id)">Supprimer</button>&nbsp;&nbsp;
+            <button class="btn btn-primary" (click)="questionnaire(sess)">Questionnaire</button>
+          </td>
         </tr>
        
       </tbody>
@@ -58,6 +61,7 @@ Ajouter une session  </button>
 
          
             <div class="card-footer">
+            
               <button type="submit" value="ajouter" (click)="ajouter()" class="btn btn-primary">Submit</button>
             </div>
           
