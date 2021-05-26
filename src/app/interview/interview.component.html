@@ -1,13 +1,14 @@
+<div *ngIf="grade=='admin'">
 <div align="center"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Ajouter un interview  </button>
-    </div>
+    </div></div>
     <div class="card-body">
         <table class="table table-bordered">
           <thead>
             <tr>
               <th>Titre</th>
               <th>Date</th>
-              <th style="width: 40px">Action</th>
+              <th *ngIf="grade=='admin'" style="width: 40px">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -17,7 +18,7 @@
               <td>
                {{inter.date}}
               </td>
-              <td><a class="btn btn-danger" (click)="supprimer(inter.id)">supprimer</a></td>
+              <td *ngIf="grade=='admin'"><a class="btn btn-danger" (click)="supprimer(inter.id)">supprimer</a></td>
             </tr>
            
           </tbody>

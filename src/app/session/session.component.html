@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<div align="center"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<div *ngIf="grade=='admin'" align="center"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
 Ajouter une session  </button>
 </div>
 
@@ -21,7 +21,8 @@ Ajouter une session  </button>
               {{sess.description}}
           </td>
           <td>
-            <button class="btn btn-danger" (click)="supprimer(sess.id)">Supprimer</button>&nbsp;&nbsp;
+            <span *ngIf="grade=='admin'">
+            <button  class="btn btn-danger"  (click)="supprimer(sess.id)">Supprimer</button>&nbsp;&nbsp;</span>
             <button class="btn btn-primary" (click)="questionnaire(sess)">Questionnaire</button>
           </td>
         </tr>

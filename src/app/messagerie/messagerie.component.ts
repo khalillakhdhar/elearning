@@ -12,12 +12,15 @@ export class MessagerieComponent implements OnInit {
   topic: Topic;
   clicked=false;
 key:string;
+grade:string;
 code:string;
   constructor(private topicService: TopicService) { }
 
   ngOnInit() {
     this.topic = new Topic();
     this.read();
+    this.grade=localStorage.getItem("grade");
+
   }
   CreateRecord() {
     const record = {};

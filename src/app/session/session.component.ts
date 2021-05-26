@@ -13,10 +13,12 @@ session:Session;
 sessions:Session[];
   constructor(   private route: ActivatedRoute,
     private router: Router,private sessionService:SessionService) { }
-
+grade:string;
   ngOnInit(): void {
     this.session=new Session();
     this.read();
+    this.grade=localStorage.getItem("grade");
+
   }
 ajouter()
 {

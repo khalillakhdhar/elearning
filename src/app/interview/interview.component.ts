@@ -9,12 +9,15 @@ import { InterviewService } from '../services/interview.service';
 })
 export class InterviewComponent implements OnInit {
 interview:Interview;
-interviews=[]
+interviews=[];
+grade:String;
   constructor(private interviewService:InterviewService) { }
 
   ngOnInit(): void {
     this.interview=new Interview();
     this.read();
+    this.grade=localStorage.getItem("grade");
+
   }
 
 
