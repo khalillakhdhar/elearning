@@ -23,9 +23,9 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">S'inscrire</p>
 
-      <form action="#" method="post">
+      <form action="#" #myForm="ngForm" method="post">
         <div class="input-group mb-3">
-          <input type="text" name="nom" class="form-control" [(ngModel)]="user.nom" placeholder="Nom">
+          <input type="text" #nom="ngModel" required name="nom" class="form-control" [(ngModel)]="user.nom" placeholder="Nom">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="number" name="age" [(ngModel)]="user.age" class="form-control" placeholder="age">
+          <input type="number"  required min="18" #age="ngModel" name="age" [(ngModel)]="user.age" class="form-control" placeholder="age">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" name="phone" [(ngModel)]="user.telephone" class="form-control" placeholder="téléphone">
+          <input type="text" required  #phone="ngModel" pattern="[+0-9]{8,16}" name="phone" [(ngModel)]="user.telephone" class="form-control" placeholder="téléphone">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-phone"></span>
@@ -49,7 +49,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <textarea class="form-control" name="adresse" [(ngModel)]="user.adresse" placeholder="Adresse"></textarea>
+          <textarea class="form-control"  #adresse="ngModel" required name="adresse" [(ngModel)]="user.adresse" placeholder="Adresse"></textarea>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-globe"></span>
@@ -57,7 +57,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" name="s" class="form-control" [(ngModel)]="user.specialite" placeholder="spécialité">
+          <input type="text" name="s"  #specialite="ngModel" class="form-control" [(ngModel)]="user.specialite" placeholder="spécialité">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-book"></span>
@@ -65,7 +65,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" name="n" class="form-control" [(ngModel)]="user.niveau" placeholder="niveau">
+          <input type="text" name="n"  #niveau="ngModel" class="form-control" [(ngModel)]="user.niveau" placeholder="niveau">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-atom"></span>
@@ -73,7 +73,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email"  [(ngModel)]="user.email" name="mail" class="form-control" placeholder="Email">
+          <input type="email"  #email="ngModel"  [(ngModel)]="user.email" name="mail" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -81,7 +81,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="pass" [(ngModel)]="user.mdp" class="form-control" placeholder="Password">
+          <input type="password"  #password="ngModel" name="pass" [(ngModel)]="user.mdp" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -92,7 +92,7 @@
        
           <!-- /.col -->
           <div class="col-6">
-            <button type="submit" (click)="adduser()" class="btn btn-primary btn-block">S'inscrire</button>
+            <button type="submit" [disabled]="myForm.invalid" (click)="adduser()" class="btn btn-primary btn-block">S'inscrire</button>
           </div>
           <!-- /.col -->
         </div>

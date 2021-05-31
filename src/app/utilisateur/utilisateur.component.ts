@@ -18,6 +18,7 @@ users:Utilisateur[];
   }
 ajouter()
 {
+  this.user.grade="responsable"
   let us=Object.assign({},this.user);
   this.userService.create_NewUser(us);
 }
