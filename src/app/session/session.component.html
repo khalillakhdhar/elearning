@@ -7,18 +7,20 @@ Ajouter une session  </button>
     <table class="table table-bordered">
       <thead>
         <tr>
-          <th style="width: 10px">Id</th>
           <th>Titre</th>
           <th>Description</th>
+          <th>url</th>
           <th >Action</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let sess of sessions">
-          <td>{{sess.id}}</td>
           <td>{{sess.titre}}</td>
           <td>
               {{sess.description}}
+          </td>
+          <td>
+            --  <a  target="_blank" *ngIf="sess.url!=null" href={{sess.url}}>voir</a>--
           </td>
           <td>
             <span *ngIf="grade=='admin'">
@@ -47,6 +49,20 @@ Ajouter une session  </button>
                 <div class="form-group">
                   <label>titre</label>
                   <input type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="session.titre" name="nom" class="form-control" placeholder="Votre titre">
+                </div>
+              </div>
+              </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <input (change)="onFileSelected($event)"
+                      type="file"
+                      id="file"
+                      #curriculame
+                      name="cv"
+                      autocomplete="off"
+                       [(ngModel)]="session.url" class="form-control" placeholder="Enter ..." >
                 </div>
               </div>
               </div>

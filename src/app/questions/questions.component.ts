@@ -61,5 +61,11 @@ edit(qs)
 
 }
 delete(idq)
-{}
+{
+  if(confirm("vous voulez supprimez?"))
+  {
+this.questionService.delete_Question(idq);
+
+  }
+}
 }

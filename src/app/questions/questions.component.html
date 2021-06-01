@@ -1,5 +1,5 @@
-<div *ngIf="grade=='admin'">
-<form>
+<div >
+<form *ngIf="grade=='admin'">
     <div align="center"><h3> Question pour {{titre}}</h3></div>
     <div class="row">
         <br>
@@ -50,7 +50,7 @@
       <tr>
         <th>Titre</th>
         <th>Texte</th>
-        <th>Recommandation</th>
+        <th>Option</th>
         <th>Réponse</th>
         <th >Action</th>
       </tr>
@@ -59,15 +59,16 @@
       <tr *ngFor="let qs of questions">
         <td>{{qs.titre}}</td>
         <td>{{qs.texte}}</td>
-        <td>
+        <td >
             {{qs.recommandation}}
         </td>
-        <td>
-            {{qs.reponse}}
+        <td >
+            <span *ngIf="grade=='admin'">{{qs.reponse}}</span>
+            <span *ngIf="grade!='admin'"><input type="text" class="form-control" name="rec"></span>
         </td>
         <td>
-          <button class="btn btn-danger" (click)="delete(qs.id)">Supprimer</button>&nbsp;&nbsp;
-          <button class="btn btn-primary" (click)="edit(qs)">Questionnaire</button>
+          <button *ngIf="grade=='admin'" class="btn btn-danger" (click)="delete(qs.id)">Supprimer</button>&nbsp;&nbsp;
+          <button *ngIf="grade!='admin'" class="btn btn-primary" (click)="edit(qs)">Répondre</button>
         </td>
       </tr>
      
