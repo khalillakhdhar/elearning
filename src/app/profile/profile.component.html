@@ -58,7 +58,18 @@
                   <input type="text" [(ngModel)]="user.niveau" name="niveau" class="form-control " id="inputError" placeholder="Enter ...">
                 </div>
 
-             
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Curriculum Vitae</label>
+                    <input (change)="onFileSelected($event)"
+                    type="file"
+                    id="file"
+                    #curriculame
+                    name="cv"
+                    autocomplete="off"
+                     [(ngModel)]="user.curriculum_vitae" class="form-control" placeholder="Enter ..." >
+                  </div>
+                </div>
                 <div class="card-footer">
                   <button type="submit" (click)="update()" class="btn btn-primary">Submit</button>
                 </div>

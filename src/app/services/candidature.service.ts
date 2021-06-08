@@ -13,25 +13,25 @@ export class CandidatureService {
 
   create_NewCandidature(record) {
    let id= localStorage.getItem("id");
-    return this.firestore.collection('Users/'+id+'/candidature').add(record);
+    return this.firestore.collection('candidature').add(record);
   }
 
   read_Candidatures() {
     let id= localStorage.getItem("id");
 
-    return this.firestore.collection('Users/'+id+'/candidature').snapshotChanges();
+    return this.firestore.collection('candidature').snapshotChanges();
   }
 
   update_Candidature(recordID, record) {
     let id= localStorage.getItem("id");
 
-    this.firestore.doc('Users/'+id+'/candidature/' + recordID).update(record);
+    this.firestore.doc('candidature/' + recordID).update(record);
     console.log('updated');
   }
 
   delete_Candidature(record_id) {
     let id= localStorage.getItem("id");
 
-    this.firestore.doc('Users/'+id+'/candidature/' + record_id).delete();
+    this.firestore.doc('candidature/' + record_id).delete();
   }
 }

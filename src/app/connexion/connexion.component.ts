@@ -57,7 +57,7 @@ for (let u of this.users)
     this.b=true;
     localStorage.setItem("id",u.id);
     localStorage.setItem("grade",u.grade);
-    window.location.replace("home/session");
+    window.location.replace("home/profile");
 
   }
 
