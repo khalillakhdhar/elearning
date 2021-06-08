@@ -3,4 +3,5 @@ export class Candidature {
     curriculum:string;
     user:string;
     iduser:string;
+    idsession:string;
 }

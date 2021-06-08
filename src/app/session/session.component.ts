@@ -5,6 +5,8 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from "@angular/fire/storage";
 import { map, finalize } from "rxjs/operators";
+import { CandidatureService } from '../services/candidature.service';
+import { Candidature } from '../classes/candidature';
 
 @Component({
   selector: 'app-session',
@@ -18,13 +20,15 @@ downloadURL: Observable<string>;
 selectedFile: File = null;
 fb = "";
   constructor(private storage: AngularFireStorage,   private route: ActivatedRoute,
+    private candidatureService:CandidatureService,
     private router: Router,private sessionService:SessionService) { }
 grade:string;
+candidature:Candidature;
   ngOnInit(): void {
     this.session=new Session();
     this.read();
     this.grade=localStorage.getItem("grade");
-
+this.candidature=new Candidature();
   }
   onFileSelected(event) {
     var n = Date.now();
@@ -96,5 +100,16 @@ supprimer(id)
 {
   if(confirm("vous voulez supprimer cette session?"))
   this.sessionService.delete_Session(id);
+}
+add(id)
+{
+  this.candidature.curriculum=localStorage.getItem("cv");
+  this.candidature.idsession=id;
+  this.candidature.iduser=localStorage.getItem("id");
+  this.candidature.user=localStorage.getItem("nom");
+let cnd=Object.assign({},this.candidature);
+  this.candidatureService.create_NewCandidature(cnd);
+  alert("candidature déposé");
+  
 }
 }
