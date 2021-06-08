@@ -21,7 +21,11 @@ export class CandidatureService {
 
     return this.firestore.collection('candidature').snapshotChanges();
   }
-
+  read_mesCandidatures() {
+    return this.firestore
+      .collection("Commandes", (ref) => ref.where("iduser", "==", localStorage.getItem("id")))
+      .snapshotChanges();
+  }
   update_Candidature(recordID, record) {
     let id= localStorage.getItem("id");
 

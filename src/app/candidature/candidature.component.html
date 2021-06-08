@@ -17,7 +17,6 @@
                     <!-- text input -->
                     <div class="form-group">
                       <label>Type</label>
-                      <select type="text" [ngModelOptions]="{standalone: true}" [(ngModel)]="candidat.type" name="type" class="form-control"><option value="spontanée">Spontanée</option><option>Embauche</option><option value="stage">Stage</option></select>
                     </div>
                   </div>
                
@@ -27,7 +26,6 @@
                     <!-- textarea -->
                     <div class="form-group">
                       <label>Description</label>
-                      <textarea   name="adresse" class="form-control" rows="3" [(ngModel)]="candidat.description" placeholder="Enter ..."></textarea>
                     </div>
                   </div>
                   <div class="col-sm-6">
@@ -66,8 +64,7 @@
         <table class="table table-bordered">
           <thead>
             <tr>
-              <th>Description</th>
-              <th>type</th>
+             
               <th >Curriculum</th>
              
               <th >Action</th>
@@ -76,8 +73,7 @@
           <tbody>
           
             <tr *ngFor="let cv of candidatures">
-              <td>{{cv.description}}</td>
-              <td>{{cv.type}}</td>
+      
               <td>
    <a href="{{cv.curriculum}}" target="_blank">Voir Curriculum vitae</a>
               </td>
