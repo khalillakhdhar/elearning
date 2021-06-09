@@ -3,5 +3,6 @@ id:string;
 titre:string;
 description:string;
 url:string;
+date:string;
 }
 

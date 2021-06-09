@@ -1,5 +1,5 @@
 <!-- Button trigger modal -->
-<div *ngIf="grade=='admin'" align="center"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<div *ngIf="grade=='admin' || grade=='responsable'  " align="center"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
 Ajouter une session  </button>
 </div>
 
@@ -9,7 +9,11 @@ Ajouter une session  </button>
         <tr>
           <th>Titre</th>
           <th>Description</th>
+          <th>date</th>
           <th>url</th>
+          <th>Interview</th>
+       
+
           <th >Action</th>
         </tr>
       </thead>
@@ -20,15 +24,40 @@ Ajouter une session  </button>
               {{sess.description}}
           </td>
           <td>
-            --  <a  target="_blank" *ngIf="sess.url!=null" href={{sess.url}}>voir</a>--
+              {{sess.date |date:'short'}}
           </td>
           <td>
-            <span *ngIf="grade=='admin'">
+            <button (click)="readrep()" *ngIf="grade=='admin' || grade=='responsable'  " class="btn btn-primary">voir</button>
+            <span *ngIf="sess.url!=''"><a  href="{{sess.url}}">Télécharger pdf</a></span>
+          </td>
+          <td>
+            <a href="home/rencontre">acceder</a>
+          </td>
+          <td>
+            <span *ngIf="grade=='admin' || grade=='responsable'  ">
             <button  class="btn btn-danger"  (click)="supprimer(sess.id)">Supprimer</button>&nbsp;&nbsp;</span>
             <button class="btn btn-primary" (click)="questionnaire(sess)">Questionnaire</button>
             <button class="btn btn-success" (click)="add(sess.id)">Déposé candidature</button>
           </td>
         </tr>
+       
+      </tbody>
+    </table>
+    <table *ngIf="grade=='admin' || grade=='responsable'  " class="table table-bordered">
+      <thead>
+        <tr>
+          <th>répondeur</th>
+          <th>Question</th>
+          <th>réponse</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rp of reponses">
+          <td>{{rp.repondeur}}</td>
+          <td>{{rp.question}}</td>
+          <td>{{rp.reponse}}</td>
+         
        
       </tbody>
     </table>
@@ -73,6 +102,13 @@ Ajouter une session  </button>
                 <div class="form-group">
                   <label>description</label>
                   <textarea [ngModelOptions]="{standalone: true}" [(ngModel)]="session.description" name="description" class="form-control" placeholder="description"></textarea>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <!-- text input -->
+                <div class="form-group">
+                  <label>Date</label>
+                  <input type="datetime-local" [ngModelOptions]="{standalone: true}" [(ngModel)]="session.date" name="date" class="form-control" placeholder="date">
                 </div>
               </div>
               </div>

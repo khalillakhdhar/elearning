@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../classes/question';
 import { QuestionService } from '../services/question.service';
+import { ReponseService } from '../services/reponse.service';
+import { Reponses } from '../classes/reponses';
 
 @Component({
   selector: 'app-questions',
@@ -12,9 +14,11 @@ question:Question;
 questions:Question[];
 titre:string;
 grade:string;
-  constructor(private questionService:QuestionService) { }
+reponse:Reponses;
+  constructor(private reponseService:ReponseService,private questionService:QuestionService) { }
 
   ngOnInit(): void {
+    this.reponse=new Reponses()
     this.question=new Question();
     this.titre=localStorage.getItem("titre");
     this.read();
@@ -49,7 +53,7 @@ this.questionService.read_Questions().subscribe(data => {
     };
   });
 
-console.log("interviews",this.question);
+console.log("interviews",this.questions);
 
 });
 
@@ -58,6 +62,12 @@ console.log("interviews",this.question);
 }
 edit(qs)
 {
+this.reponse.idqst=localStorage.getItem("ids");
+this.reponse.question=qs.titre;
+this.reponse.repondeur=localStorage.getItem("nom");
+//this.reponse.idqst=localStorage.getItem("id");
+let rp=Object.assign({},this.reponse);
+this.reponseService.create_NewReponse(rp);
 
 }
 delete(idq)

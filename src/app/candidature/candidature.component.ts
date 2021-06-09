@@ -34,7 +34,7 @@ export class CandidatureComponent implements OnInit {
   }
   read()
   {
-  this.candidatureService.read_Candidatures().subscribe(data => {
+  this.candidatureService.read_mesCandidatures().subscribe(data => {
   
     this.candidatures = data.map(e => {
       return {

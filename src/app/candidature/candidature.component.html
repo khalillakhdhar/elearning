@@ -1,71 +1,13 @@
-<div align="center"><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Ajouter une candidature  </button>
-    </div>
+
   
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Ajouter</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <!-- text input -->
-                    <div class="form-group">
-                      <label>Type</label>
-                    </div>
-                  </div>
-               
-                </div>
-                <div class="row">
-                  <div class="col-sm-6">
-                    <!-- textarea -->
-                    <div class="form-group">
-                      <label>Description</label>
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label>Curriculum Vitae</label>
-                      <input (change)="onFileSelected($event)"
-                      type="file"
-                      id="file"
-                      #curriculame
-                      name="cv"
-                      autocomplete="off"
-                       [(ngModel)]="candidat.curriculum" class="form-control" placeholder="Enter ..." >
-                    </div>
-                  </div>
-                </div>
-
-                <!-- input states -->
-              
-           
-         
-
-             
-                <div class="card-footer">
-                  <button type="submit" (click)="ajouter()" class="btn btn-primary">Submit</button>
-                </div>
-              
-</form>
-            </div>
-            <div class="modal-footer">
-             
-            </div>
-          </div>
-        </div>
-      </div>
+  
       <div class="card-body">
         <table class="table table-bordered">
           <thead>
             <tr>
              
               <th >Curriculum</th>
+              <th >nom</th>
              
               <th >Action</th>
             </tr>
@@ -76,6 +18,9 @@
       
               <td>
    <a href="{{cv.curriculum}}" target="_blank">Voir Curriculum vitae</a>
+              </td>
+              <td>
+   {{cv.user}}
               </td>
            
        

@@ -23,7 +23,7 @@ export class CandidatureService {
   }
   read_mesCandidatures() {
     return this.firestore
-      .collection("Commandes", (ref) => ref.where("iduser", "==", localStorage.getItem("id")))
+      .collection("candidature", (ref) => ref.where("iduser", "==", localStorage.getItem("id")))
       .snapshotChanges();
   }
   update_Candidature(recordID, record) {

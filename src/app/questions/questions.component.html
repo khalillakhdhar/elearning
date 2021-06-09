@@ -64,7 +64,7 @@
         </td>
         <td >
             <span *ngIf="grade=='admin'">{{qs.reponse}}</span>
-            <span *ngIf="grade!='admin'"><input type="text" class="form-control" name="rec"></span>
+            <span *ngIf="grade!='admin'"><input type="text" [(ngModel)]="reponse.reponse" class="form-control" name="rec"></span>
         </td>
         <td>
           <button *ngIf="grade=='admin'" class="btn btn-danger" (click)="delete(qs.id)">Supprimer</button>&nbsp;&nbsp;

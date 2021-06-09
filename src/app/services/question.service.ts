@@ -17,7 +17,8 @@ export class QuestionService {
   }
 
   read_Questions() {
-    return this.firestore.collection('Questions').snapshotChanges();
+    return this.firestore.collection("Questions", (ref) => ref.where("idsession", "==", localStorage.getItem("ids")))
+    .snapshotChanges();
   }
 
   update_Question(recordID, record) {

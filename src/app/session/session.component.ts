@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Session } from '../classes/session';
 import { SessionService } from '../services/session.service';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from "@angular/fire/storage";
-import { map, finalize } from "rxjs/operators";
+import { finalize } from "rxjs/operators";
 import { CandidatureService } from '../services/candidature.service';
 import { Candidature } from '../classes/candidature';
+import { ReponseService } from '../services/reponse.service';
+import { Reponses } from '../classes/reponses';
 
 @Component({
   selector: 'app-session',
@@ -16,10 +18,12 @@ import { Candidature } from '../classes/candidature';
 export class SessionComponent implements OnInit {
 session:Session;
 sessions:Session[];
+reponses:Reponses[];
 downloadURL: Observable<string>;
 selectedFile: File = null;
 fb = "";
-  constructor(private storage: AngularFireStorage,   private route: ActivatedRoute,
+  constructor(private storage: AngularFireStorage, 
+    private reponseapi:ReponseService,  private route: ActivatedRoute,
     private candidatureService:CandidatureService,
     private router: Router,private sessionService:SessionService) { }
 grade:string;
@@ -72,6 +76,7 @@ this.sessionService.read_Sessions().subscribe(data => {
 
     
      titre: e.payload.doc.data()["titre"],
+     date: e.payload.doc.data()["date"],
      description: e.payload.doc.data()["description"],
      url: e.payload.doc.data()["url"],
      
@@ -82,6 +87,34 @@ this.sessionService.read_Sessions().subscribe(data => {
   });
 
 console.log("interviews",this.sessions);
+
+});
+
+
+
+}
+readrep()
+{
+this.reponseapi.read_Reponses().subscribe(data => {
+
+  this.reponses = data.map(e => {
+    return {
+      id: e.payload.doc.id,
+      texte: e.payload.doc.data()["texte"],
+      idqst: e.payload.doc.data()["idqst"],
+      reponse: e.payload.doc.data()["reponse"],
+
+      repondeur: e.payload.doc.data()["repondeur"],
+      question: e.payload.doc.data()["question"],
+      idquestion: e.payload.doc.data()["idquestion"],
+     
+
+
+
+    };
+  });
+
+console.log("reponses",this.reponses);
 
 });
 
