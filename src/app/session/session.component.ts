@@ -21,6 +21,7 @@ sessions:Session[];
 reponses:Reponses[];
 downloadURL: Observable<string>;
 selectedFile: File = null;
+cv:string;
 fb = "";
   constructor(private storage: AngularFireStorage, 
     private reponseapi:ReponseService,  private route: ActivatedRoute,
@@ -31,6 +32,7 @@ candidature:Candidature;
   ngOnInit(): void {
     this.session=new Session();
     this.read();
+    this.cv=localStorage.getItem("cv");
     this.grade=localStorage.getItem("grade");
 this.candidature=new Candidature();
   }
