@@ -27,7 +27,7 @@ Ajouter une session  </button>
               {{sess.date |date:'short'}}
           </td>
           <td>
-            <button (click)="readrep()" *ngIf="grade=='admin' || grade=='responsable'  " class="btn btn-primary">voir</button>
+            <button (click)="readrep(sess.id)" *ngIf="grade=='admin' || grade=='responsable'" class="btn btn-primary">voir</button>
             <span *ngIf="sess.url!=''"><a  href="{{sess.url}}">Télécharger pdf</a></span>
           </td>
           <td>

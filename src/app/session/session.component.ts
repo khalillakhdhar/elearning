@@ -95,8 +95,9 @@ console.log("interviews",this.sessions);
 
 
 }
-readrep()
+readrep(id)
 {
+  localStorage.setItem("ids",id);
 this.reponseapi.read_Reponses().subscribe(data => {
 
   this.reponses = data.map(e => {
