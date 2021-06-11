@@ -37,7 +37,7 @@ Ajouter une session  </button>
             <span *ngIf="grade=='admin' || grade=='responsable'  ">
             <button  class="btn btn-danger"  (click)="supprimer(sess.id)">Supprimer</button>&nbsp;&nbsp;</span>
             <button class="btn btn-primary" (click)="questionnaire(sess)">Questionnaire</button>
-            <button class="btn btn-success" (click)="add(sess.id)">Déposer candidature</button>
+         <span *ngIf="grade!='admin' && grade!='responsable'">   <button class="btn btn-success" (click)="add(sess.id)">Déposer candidature</button></span>
           </td>
         </tr>
        
