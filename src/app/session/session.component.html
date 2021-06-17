@@ -11,7 +11,6 @@ Ajouter une session  </button>
           <th>Description</th>
           <th>date</th>
           <th>url</th>
-          <th>Interview</th>
        
 
           <th >Action</th>
@@ -27,16 +26,13 @@ Ajouter une session  </button>
               {{sess.date |date:'short'}}
           </td>
           <td>
-            <button (click)="readrep(sess.id)" *ngIf="grade=='admin' || grade=='responsable'" class="btn btn-primary">voir</button>
+            <button (click)="readrep(sess.id)" *ngIf="grade=='admin' || grade=='responsable'" class="btn btn-primary">voir condidature</button>
             <span *ngIf="sess.url!=''"><a  href="{{sess.url}}">Télécharger pdf</a></span>
           </td>
-          <td>
-            <a href="home/rencontre">acceder</a>
-          </td>
+          
           <td>
             <span *ngIf="grade=='admin' || grade=='responsable'  ">
             <button  class="btn btn-danger"  (click)="supprimer(sess.id)">Supprimer</button>&nbsp;&nbsp;</span>
-            <button class="btn btn-primary" (click)="questionnaire(sess)">Questionnaire</button>
          <span *ngIf="grade!='admin' && grade!='responsable'">   <button class="btn btn-success" (click)="add(sess.id)">Déposer candidature</button></span>
           </td>
         </tr>
