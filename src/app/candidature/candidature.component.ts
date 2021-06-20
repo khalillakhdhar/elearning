@@ -45,7 +45,7 @@ export class CandidatureComponent implements OnInit {
        user: e.payload.doc.data()["user"],
        iduser: e.payload.doc.data()["id_user"],
        idsession: e.payload.doc.data()["idsession"],
-       
+       did:e.payload.doc.data()["did"],
   
   
   

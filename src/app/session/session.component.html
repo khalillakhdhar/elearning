@@ -39,25 +39,44 @@ Ajouter une session  </button>
        
       </tbody>
     </table>
-    <table *ngIf="grade=='admin' || grade=='responsable'  " class="table table-bordered">
+    <table *ngIf="grade=='admin' || grade=='responsable'  " class="table table-bordered" class="table table-bordered">
       <thead>
         <tr>
-          <th>répondeur</th>
-          <th>Question</th>
-          <th>réponse</th>
+         
+          <th >Curriculum</th>
+          <th >nom</th>
+          <th >specialité</th>
+          <th >Specialité2 (optionelle)</th>
+          <th >Specialité3 (optionelle)</th>
          
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let rp of reponses">
-          <td>{{rp.repondeur}}</td>
-          <td>{{rp.question}}</td>
-          <td>{{rp.reponse}}</td>
-          <td><a href={{cv}}>voir cv</a></td>
-         
+      
+        <tr *ngFor="let cv of candidatures">
+  
+          <td>
+<a href="{{cv.curriculum}}" target="_blank">Voir Curriculum vitae</a>
+          </td>
+          <td>
+{{cv.user}}
+          </td>
+          <td>
+{{cv.did.specialite}} ({{cv.did.s1}}%)
+          </td>
+          <td>
+{{cv.did.specialite2}} ({{cv.did.s2}}%)
+          </td>
+          <td>
+{{cv.did.specialite3}} ({{cv.did.s3}}%)
+          </td>
+       
+   
+        </tr>
        
       </tbody>
     </table>
+    
   </div>
 
   <!-- Modal -->

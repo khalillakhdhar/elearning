@@ -13,29 +13,34 @@ export class CandidatureService {
 
   create_NewCandidature(record) {
    let id= localStorage.getItem("id");
-    return this.firestore.collection('candidature').add(record);
+    return this.firestore.collection('Candidature').add(record);
   }
 
   read_Candidatures() {
     let id= localStorage.getItem("id");
 
-    return this.firestore.collection('candidature').snapshotChanges();
+    return this.firestore.collection('Candidature').snapshotChanges();
   }
   read_mesCandidatures() {
     return this.firestore
-      .collection("candidature", (ref) => ref.where("iduser", "==", localStorage.getItem("id")))
+      .collection("Candidature", (ref) => ref.where("iduser", "==", localStorage.getItem("id")))
+      .snapshotChanges();
+  }
+  read_nosCandidatures() {
+    return this.firestore
+      .collection("Candidature", (ref) => ref.where("idsession", "==", localStorage.getItem("ids")))
       .snapshotChanges();
   }
   update_Candidature(recordID, record) {
     let id= localStorage.getItem("id");
 
-    this.firestore.doc('candidature/' + recordID).update(record);
+    this.firestore.doc('Candidature/' + recordID).update(record);
     console.log('updated');
   }
 
   delete_Candidature(record_id) {
     let id= localStorage.getItem("id");
 
-    this.firestore.doc('candidature/' + record_id).delete();
+    this.firestore.doc('Candidature/' + record_id).delete();
   }
 }

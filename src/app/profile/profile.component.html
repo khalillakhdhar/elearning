@@ -73,7 +73,12 @@
                 <div class="card-footer">
                   <button type="submit" (click)="update()" class="btn btn-primary">Submit</button>
                 </div>
-              
+          <table *ngIf="fb!=''&& b==false" class="table">
+<tr><td>Spécialité reconnue</td><td>Spécialité 2</td><td>Spécialité 3</td></tr>
+<tr><td>{{did.specialite}}({{did.s1}}%)</td><td>{{did.specialite2}}({{did.s2}}%)</td><td>{{did.specialite3}}({{did.s3}}%)</td></tr>
+
+          </table>    
+          <p *ngIf="fb!=''&& b==true">non reconnu veuillez inclure un CV valide</p>
 </form>
               
             <div class="col-md-2"></div>

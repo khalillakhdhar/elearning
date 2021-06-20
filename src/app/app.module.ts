@@ -32,6 +32,7 @@ import { CandidatureComponent } from './candidature/candidature.component';
 import { MeetingComponent } from './meeting/meeting.component';
 import { RencontreComponent } from './rencontre/rencontre.component';
 import { QuestionsComponent } from './questions/questions.component';
+import { CandiComponent } from './classes/candi/candi.component';
 
 
 
@@ -53,7 +54,8 @@ import { QuestionsComponent } from './questions/questions.component';
     CandidatureComponent,
     MeetingComponent,
     RencontreComponent,
-    QuestionsComponent
+    QuestionsComponent,
+    CandiComponent
   ],
   imports: [
     BrowserModule,

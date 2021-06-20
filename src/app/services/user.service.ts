@@ -18,6 +18,9 @@ export class UserService {
   read_Users() {
     return this.firestore.collection('Users').snapshotChanges();
   }
+  read_learning() {
+    return this.firestore.collection('candidature').snapshotChanges();
+  }
 
   update_User(recordID, record) {
     this.firestore.doc('Users/' + recordID).update(record);

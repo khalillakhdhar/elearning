@@ -29,6 +29,7 @@ fb = "";
     private router: Router,private sessionService:SessionService) { }
 grade:string;
 candidature:Candidature;
+candidatures:Candidature[];
   ngOnInit(): void {
     this.session=new Session();
     this.read();
@@ -98,30 +99,29 @@ console.log("interviews",this.sessions);
 readrep(id)
 {
   localStorage.setItem("ids",id);
-this.reponseapi.read_Reponses().subscribe(data => {
-
-  this.reponses = data.map(e => {
-    return {
-      id: e.payload.doc.id,
-      texte: e.payload.doc.data()["texte"],
-      idqst: e.payload.doc.data()["idqst"],
-      reponse: e.payload.doc.data()["reponse"],
-
-      repondeur: e.payload.doc.data()["repondeur"],
-      question: e.payload.doc.data()["question"],
-      idquestion: e.payload.doc.data()["idquestion"],
-     
-
-
-
-    };
+  this.candidatureService.read_nosCandidatures().subscribe(data => {
+  
+    this.candidatures = data.map(e => {
+      return {
+       id: e.payload.doc.id,
+  
+       curriculum: e.payload.doc.data()["curriculum"],
+       
+       user: e.payload.doc.data()["user"],
+       iduser: e.payload.doc.data()["id_user"],
+       idsession: e.payload.doc.data()["idsession"],
+       did:e.payload.doc.data()["did"],
+  
+  
+  
+      };
+    });
+  
+  
+    console.log("liste",this.candidatures);
+  
   });
-
-console.log("reponses",this.reponses);
-
-});
-
-
+  
 
 }
 questionnaire(session)
@@ -143,6 +143,7 @@ add(id)
   this.candidature.idsession=id;
   this.candidature.iduser=localStorage.getItem("id");
   this.candidature.user=localStorage.getItem("nom");
+this.candidature.did=JSON.parse(localStorage.getItem("detailles"));
 let cnd=Object.assign({},this.candidature);
   this.candidatureService.create_NewCandidature(cnd);
   alert("candidature déposé");

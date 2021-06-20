@@ -4,6 +4,7 @@ import { Utilisateur } from '../classes/utilisateur';
 import { UserService } from '../services/user.service';
 import { AngularFireStorage } from "@angular/fire/storage";
 import { map, finalize } from "rxjs/operators";
+import { Did } from '../classes/did';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -15,14 +16,19 @@ grade:string;
 downloadURL: Observable<string>;
 selectedFile: File = null;
 fb = "";
+did:Did;
+b=true;
+dids:Did[];
 user:Utilisateur;
 users:Utilisateur[];
 constructor(private storage: AngularFireStorage,private userService:UserService) { }
 
 ngOnInit(): void {
   this.user=new Utilisateur();
+  this.did=new Did();
   this.id=localStorage.getItem("id");
   this.read();
+  this.reading();
 }
 onFileSelected(event) {
   var n = Date.now();
@@ -38,6 +44,8 @@ onFileSelected(event) {
         this.downloadURL.subscribe((url) => {
           if (url) {
             this.fb = url;
+            this.search(event.target.files[0].name);
+            alert(event.target.files[0].name);
           }
           console.log(this.fb);
         });
@@ -48,6 +56,16 @@ onFileSelected(event) {
         console.log(url);
       }
     });
+}
+search(data)
+{
+  for (let cr of this.dids)
+  {
+    if(data.includes(cr.titre))
+this.did=cr;
+localStorage.setItem("detailles",JSON.stringify(cr));
+this.b=false;
+  }
 }
 read()
 {
@@ -104,11 +122,42 @@ localStorage.setItem("nom",this.user.nom);
 
 
 }
+reading()
+{
+this.userService.read_learning().subscribe(data => {
+
+  this.dids = data.map(e => {
+    return {
+     id: e.payload.doc.id,
+
+     titre: e.payload.doc.data()["titre"],
+     specialite: e.payload.doc.data()["specialite"],
+     specialite2: e.payload.doc.data()["specialite2"],
+     specialite3: e.payload.doc.data()["specialite3"],
+     s1: e.payload.doc.data()["s1"],
+     s2: e.payload.doc.data()["s2"],
+     s3: e.payload.doc.data()["s3"],
+
+
+
+    };
+  });
+
+
+  console.log("res",this.dids);
+
+});
+
+
+
+}
 update()
 {
   this.user.curriculum_vitae=this.fb;
   let us=Object.assign({},this.user);
+  localStorage.setItem("cv",this.fb);
 this.userService.update_User(this.id,us);
+
 alert("updated successfully");
 
 
