@@ -45,7 +45,7 @@ onFileSelected(event) {
           if (url) {
             this.fb = url;
             this.search(event.target.files[0].name);
-            alert(event.target.files[0].name);
+            //alert(event.target.files[0].name);
           }
           console.log(this.fb);
         });
