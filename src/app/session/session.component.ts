@@ -111,6 +111,7 @@ readrep(id)
        iduser: e.payload.doc.data()["id_user"],
        idsession: e.payload.doc.data()["idsession"],
        did:e.payload.doc.data()["did"],
+       decision:e.payload.doc.data()["decision"],
   
   
   
@@ -141,6 +142,7 @@ add(id)
 {
   this.candidature.curriculum=localStorage.getItem("cv");
   this.candidature.idsession=id;
+  this.candidature.decision="attente"
   this.candidature.iduser=localStorage.getItem("id");
   this.candidature.user=localStorage.getItem("nom");
 this.candidature.did=JSON.parse(localStorage.getItem("detailles"));
@@ -148,5 +150,11 @@ let cnd=Object.assign({},this.candidature);
   this.candidatureService.create_NewCandidature(cnd);
   alert("candidature déposé");
   
+}
+accept(id)
+{
+  this.candidature.decision="accepté";
+  let cnd=Object.assign({},this.candidature);
+  this.candidatureService.update_Candidature(id,cnd);
 }
 }

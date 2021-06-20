@@ -5,5 +5,6 @@ export class Candidature {
     user:string;
     iduser:string;
     idsession:string;
+    decision:string;
     did:Did;
 }

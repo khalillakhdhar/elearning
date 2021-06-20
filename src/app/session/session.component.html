@@ -48,6 +48,7 @@ Ajouter une session  </button>
           <th >specialité</th>
           <th >Specialité2 (optionelle)</th>
           <th >Specialité3 (optionelle)</th>
+          <th >Décision</th>
          
         </tr>
       </thead>
@@ -70,6 +71,8 @@ Ajouter une session  </button>
           <td>
 {{cv.did.specialite3}} ({{cv.did.s3}}%)
           </td>
+          <td>
+            <button class="btn btn-success" (click)="accept(cv.id)">Notifier acceptation</button>          </td>
        
    
         </tr>
