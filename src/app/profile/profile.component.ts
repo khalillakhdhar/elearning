@@ -45,7 +45,7 @@ onFileSelected(event) {
           if (url) {
             this.fb = url;
             this.search(event.target.files[0].name);
-            //alert(event.target.files[0].name);
+            alert(event.target.files[0].name);
           }
           console.log(this.fb);
         });
@@ -62,10 +62,13 @@ search(data)
   for (let cr of this.dids)
   {
     if(data.includes(cr.titre))
+    {
 this.did=cr;
+console.log(cr);
 localStorage.setItem("detailles",JSON.stringify(cr));
 this.b=false;
   }
+}
 }
 read()
 {

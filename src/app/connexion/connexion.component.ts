@@ -16,6 +16,7 @@ b=false;
 
   ngOnInit(): void {
     this.user=new Utilisateur();
+    localStorage.clear();
     this.read();
   }
 read()
