@@ -35,7 +35,7 @@
               <td>
         {{us.specialite}}
               </td>
-              <td><a class="btn btn-danger" (click)="supprimer(us.id)">supprimer</a></td>
+              <td><a *ngIf="grade=='admin'" class="btn btn-danger" (click)="supprimer(us.id)">supprimer</a></td>
             </tr>
            
           </tbody>
