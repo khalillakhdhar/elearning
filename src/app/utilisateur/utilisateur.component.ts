@@ -9,11 +9,13 @@ import { Utilisateur } from '../classes/utilisateur';
 })
 export class UtilisateurComponent implements OnInit {
 user:Utilisateur;
+grade:string;
 users:Utilisateur[];
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
     this.user=new Utilisateur();
+    this.grade=localStorage.getItem("grade");
     this.read();
   }
 ajouter()
